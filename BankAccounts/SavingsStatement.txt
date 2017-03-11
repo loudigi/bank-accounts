@@ -1,2 +1,4 @@
 Mike Jones Savings 989765261
-3/11/2017 +$30.00 Running Balance: $130.00
+3/11/2017 -$234.00 Running Balance: -$34.00
+3/11/2017 -$456.00 Running Balance: -$490.00
+3/11/2017 +$888.00 Running Balance: $398.00

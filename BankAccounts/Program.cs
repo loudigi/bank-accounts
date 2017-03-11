@@ -14,9 +14,9 @@ namespace BankAccounts
         static void Main(string[] args)
         {
 
-            Checking myChecking = new Checking();
+            
 
-
+            Console.WriteLine("\nWelcome to {0}!",Account.BankName);
             int userInput = 0;
             do
             {
@@ -26,11 +26,14 @@ namespace BankAccounts
                 switch (userInput)
                 {
                     case 1:
-
-                        //myChecking.ShowMenu();
+                        ClientInfo();
+                        
                         break;
                     case 2:
-                        //mySavings.ShowMenu();
+                        Checking.ShowBalance();
+                        Savings.ShowBalance();
+                        Reserve.ShowBalance();
+                        
                         break;
                     case 3:
                         MainDeposit();
@@ -40,7 +43,7 @@ namespace BankAccounts
                         MainWithdraw();
                         break;
                     case 5:
-                        Console.WriteLine("Thank you for using Fat Stacks Banking.");
+                        Console.WriteLine("Thank you for using {0}.", Account.BankName);
                         //Checking.SendLog();
                         //System.Environment.Exit(0);
                         break;
@@ -62,57 +65,30 @@ namespace BankAccounts
          static int MainMenu()
         {
             
-            Savings mySavings = new Savings();
-            Reserve myReserve = new Reserve();
-            Account myAccount = new Account();
-           // Console.WriteLine("Hi " + myAccount.ClientName + "\n");
+          
+         
 
-            Console.WriteLine("\nWelcome to Fat Stacks Banking!\n\n[ MAIN MENU ]\n\n Please select from the following options\n" +
-                "  1. View Profile\n" +
-                "  2. Account Balance\n" +
-                "  3. +Deposit Funds\n" +
-                "  4. +Withdraw Funds\n" +
-                "  5. Exit");
+            Console.WriteLine("\n\n[ MAIN MENU ]\n\n Please select from the following options\n" +
+                "  1.   View Profile\n" +
+                "  2.   Account Balance\n" +
+                "  3. + Deposit Funds\n" +
+                "  4. + Withdraw Funds\n" +
+                "  5.   Exit");
 
             int selection = int.Parse(Console.ReadLine());
             return selection;
-          /*  switch (selection)
-            {
-                case 1:
-                    
-                    //myChecking.ShowMenu();
-                    break;
-                case 2:
-                    //mySavings.ShowMenu();
-                    break;
-                case 3:
-                    
-                    //myReserve.ShowMenu();
-                    break;
-                case 4:
-                    Checking.Withdraw();
-                    break;
-                case 5:
-                    Console.WriteLine("Thank you for using Fat Stacks Banking.");
-
-                    System.Environment.Exit(0);
-                    break;
-                default:
-                    Console.WriteLine("That was not an available option");
-
-                    break;
-            } */
+          
         }
 
 
 
         static void MainDeposit()
         {
-            Console.WriteLine("  -[ DEPOSIT MENU ]\n\n   Select an account to deposit to\n" +
-                "   1. Checking\n"+
-                "   2. Savings\n" +
-                "   3. Reserve\n" +
-                "   4. Return to Main Menu");
+            Console.WriteLine("  -[ DEPOSIT MENU ]\n\n    Select an account to deposit to\n" +
+                "    1. Checking\n"+
+                "    2. Savings\n" +
+                "    3. Reserve\n" +
+                "    4. Return to Main Menu");
 
             int withdrawSelection = int.Parse(Console.ReadLine());
             if (withdrawSelection == 1)
@@ -138,7 +114,12 @@ namespace BankAccounts
 
         static void MainWithdraw()
         {
-            Console.WriteLine("Select an account to withdraw from\n 1. Checking\n 2. Savings\n 3. Reserve\n 4. Return to Main Menu");
+            Console.WriteLine("  -[ WITHDRAW MENU ]\n\n    Select an account to withdraw from\n" +
+                "    1. Checking\n" +
+                "    2. Savings\n" +
+                "    3. Reserve\n" +
+                "    4. Return to Main Menu");
+
             int withdrawSelection = int.Parse(Console.ReadLine());
             if (withdrawSelection == 1)
             {
@@ -156,6 +137,18 @@ namespace BankAccounts
             {
                 Console.WriteLine(withdrawSelection + " is not an option. Returning to Main Menu");
             }
+        }
+
+        static void ClientInfo()
+        {
+            Console.WriteLine("============================");
+            Console.WriteLine("{0}" +
+            "\nMemeber since 2004 " +
+            "\nYou have 3 accounts with {1}" +
+            "\n\nAddress: \n {2}" +
+            "\nPhone Number: {3}" , Account.ClientName, Account.BankName, Account.ClientAddress, Account.ClientPhone);
+
+            Console.WriteLine("============================");
         }
 
 
