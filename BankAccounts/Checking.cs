@@ -9,52 +9,60 @@ namespace BankAccounts
 {
     class Checking : Account
     {
+       static List<string> myCheckingLog = new List<string>();
+
+            static string AccountType = "Checking";
+            static int AccountNumber = 334556567;
+            static double AccountBalance = 100;
+
         public Checking()
         {
-            AccountType = "Checking";
-            AccountNumber = 334556567;
-            AccountBalance = 100;
-            StartLogger();
+
+           // StartLogger(AccountType);
+            
         }
 
-        private double DepositAmount { get; set; }
-        private double WithDrawAmount { get; set; }
+        static double DepositAmount { get; set; }
+        static double WithDrawAmount { get; set; }
 
-        public override void Deposit()
+        static public void Deposit()
         {
             Console.WriteLine("Please enter the amount you wish to deposit.");
             DepositAmount = double.Parse(Console.ReadLine());
             AccountBalance += DepositAmount;
             Console.WriteLine("{0} have been deposited into your {1} Account. Your new balance is {2}", ToCurrency(DepositAmount), AccountType, ToCurrency(AccountBalance));
 
-            StreamWriter cdWriter = new StreamWriter(@"..\..\CheckingStatement.txt");
-            cdWriter.WriteLine((DateTime.Today.ToString("d")) + " " + "+" + ToCurrency(DepositAmount) + " Running Balance: " + ToCurrency(AccountBalance));
-            cdWriter.Close();
-            ShowMenu();
+            myCheckingLog.Add((DateTime.Today.ToString("d")) + " " + "+" + ToCurrency(DepositAmount) + " Running Balance: " + ToCurrency(AccountBalance));
+
+            SendLog();
+
+    
         }
 
-        public override void Withdraw()
+        static public void Withdraw()
         {
             Console.WriteLine("Please enter the amount you wish to withdraw.");
             WithDrawAmount = double.Parse(Console.ReadLine());
             AccountBalance -= WithDrawAmount;
             Console.WriteLine("{0} has been withdrawn from your {1} Account. Your new balance is {2}", ToCurrency(WithDrawAmount), AccountType, ToCurrency(AccountBalance));
-            
-            StreamWriter cwWriter = new StreamWriter(@"..\..\CheckingStatement.txt",true);
-          
-            cwWriter.WriteLine((DateTime.Today.ToString("d")) + " " + "-" + ToCurrency(WithDrawAmount) + " Running Balance: " + ToCurrency(AccountBalance));
-            cwWriter.Close();
 
-            ShowMenu();
+            myCheckingLog.Add((DateTime.Today.ToString("d")) + " " + "-" + ToCurrency(WithDrawAmount) + " Running Balance: " + ToCurrency(AccountBalance));
+
+            SendLog();
+
+           // ShowMenu();
         }
 
-        //Initialize statement logger file with client details.
-        public void StartLogger()
+        static public void SendLog()
         {
-            StreamWriter startWriter = new StreamWriter(@"..\..\CheckingStatement.txt");
-            startWriter.WriteLine(ClientName + " " + AccountType + " " + AccountNumber);
-           
-            startWriter.Close();
+            StreamWriter cWriter = new StreamWriter(@"..\..\CheckingStatement.txt");
+
+            using (cWriter)
+            {
+                cWriter.WriteLine(ClientName + " " + AccountType + " " + AccountNumber);
+                foreach (string line in myCheckingLog)
+                    cWriter.WriteLine(line);
+            }
         }
     }
 }

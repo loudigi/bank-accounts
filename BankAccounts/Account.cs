@@ -3,15 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using System.Globalization;
 
 namespace BankAccounts
 {
     class Account
     {
+
+        static string clientName = "Mike Jones";
+
+         static public string ClientName
+        {
+            get { return clientName; }
+        }
+        /*
         //private string accountType;
         //private int accountNumber;
-        private string clientName = "Mike Jones";
+        
         //private double accountBalance;
         public Account()
         {
@@ -27,10 +36,7 @@ namespace BankAccounts
         public string AccountType { get; set; }
         public int AccountNumber { get; set; }
         public double AccountBalance { get; set; }
-        public string ClientName
-        {
-            get { return this.clientName; }
-        }
+        
         
             
 
@@ -87,8 +93,17 @@ namespace BankAccounts
 
 
         }
-        
-        public string ToCurrency(double nums)
+        public void StartLogger(string filename)
+        {
+            
+            StreamWriter startWriter = new StreamWriter("..\\..\\" + filename + "iStatement.txt");
+            startWriter.WriteLine(ClientName + " " + AccountType + " " + AccountNumber);
+
+            startWriter.Close();
+        }
+        */
+
+        static public  string ToCurrency(double nums)
         {
             string cash = nums.ToString("C", CultureInfo.CurrentCulture);
             return cash;
