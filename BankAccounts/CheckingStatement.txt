@@ -1,3 +1,2 @@
 Mike Jones Checking 334556567
-3/11/2017 -$234.00 Running Balance: -$134.00
-3/11/2017 +$456.00 Running Balance: $322.00
+3/12/2017 -$455.00 Running Balance: -$355.00

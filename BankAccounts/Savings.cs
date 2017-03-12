@@ -18,8 +18,6 @@ namespace BankAccounts
         public Savings()
         {
 
-            
-
         }
 
         static double DepositAmount { get; set; }
@@ -28,21 +26,40 @@ namespace BankAccounts
         static public void Deposit()
         {
             Console.WriteLine("Please enter the amount you wish to deposit.");
-            DepositAmount = double.Parse(Console.ReadLine());
+            try
+            {
+                DepositAmount = double.Parse(Console.ReadLine());
+
+            }
+            catch (FormatException sdm)
+            {
+                Console.WriteLine("You must enter a dollar amount");
+                throw;
+            }
+
             AccountBalance += DepositAmount;
+
             Console.WriteLine("{0} have been deposited into your {1} Account.\nYour new balance is {2}", ToCurrency(DepositAmount), AccountType, ToCurrency(AccountBalance));
 
             mySavingsLog.Add((DateTime.Today.ToString("d")) + " " + "+" + ToCurrency(DepositAmount) + " Running Balance: " + ToCurrency(AccountBalance));
 
             SendLog();
 
-
         }
 
         static public void Withdraw()
         {
             Console.WriteLine("Please enter the amount you wish to withdraw.");
-            WithdrawAmount = double.Parse(Console.ReadLine());
+
+            try
+            {
+                WithdrawAmount = double.Parse(Console.ReadLine());
+            }
+            catch (FormatException swm)
+            {
+                Console.WriteLine("You must enter a dollar amount");
+                throw;
+            }
             AccountBalance -= WithdrawAmount;
 
             if (WithdrawAmount > AccountBalance)
@@ -56,8 +73,8 @@ namespace BankAccounts
 
             SendLog();
 
-            
         }
+
 
         static public void ShowBalance()
         {

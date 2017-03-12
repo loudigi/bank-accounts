@@ -9,17 +9,15 @@ namespace BankAccounts
 {
     class Checking : Account
     {
-       static List<string> myCheckingLog = new List<string>();
+        static List<string> myCheckingLog = new List<string>();
 
-            static string AccountType = "Checking";
-            static int AccountNumber = 334556567;
-            static double AccountBalance = 100;
+        static string AccountType = "Checking";
+        static int AccountNumber = 334556567;
+        static double AccountBalance = 100;
 
         public Checking()
         {
 
-           
-            
         }
 
         static double DepositAmount { get; set; }
@@ -28,7 +26,15 @@ namespace BankAccounts
         static public void Deposit()
         {
             Console.WriteLine("Please enter the amount you wish to deposit.");
-            DepositAmount = double.Parse(Console.ReadLine());
+            try
+            {
+                DepositAmount = double.Parse(Console.ReadLine());
+            }
+            catch (FormatException cdm)
+            {
+                Console.WriteLine("You must enter a dollar amount");
+                throw;
+            }
             AccountBalance += DepositAmount;
             Console.WriteLine("{0} have been deposited into your {1} Account.\nYour new balance is {2}", ToCurrency(DepositAmount), AccountType, ToCurrency(AccountBalance));
 
@@ -36,14 +42,20 @@ namespace BankAccounts
 
             SendLog();
 
-    
         }
 
         static public void Withdraw()
         {
             Console.WriteLine("Please enter the amount you wish to withdraw.");
-            WithdrawAmount = double.Parse(Console.ReadLine());
-
+            try
+            {
+                WithdrawAmount = double.Parse(Console.ReadLine());
+            }
+            catch (FormatException cwm)
+            {
+                Console.WriteLine("You must enter a dollar amount");
+                throw;
+            }
             if (WithdrawAmount > AccountBalance)
             {
                 Console.WriteLine("\nALERT: The withdraw amount is more than your current balance.\nYou have 24 hours to deposit funds before \noverdraft fees are posted to your account.\n");
@@ -56,15 +68,13 @@ namespace BankAccounts
 
             SendLog();
 
-       
         }
 
         static public void ShowBalance()
         {
-            Console.Write(String.Format(" {0,-16}", AccountType + " Account" ));
+            Console.Write(String.Format(" {0,-16}", AccountType + " Account"));
             Console.WriteLine(" # {0} Balance:{1}", AccountNumber, ToCurrency(AccountBalance));
         }
-      
 
         static public void SendLog()
         {

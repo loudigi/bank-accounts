@@ -10,15 +10,14 @@ namespace BankAccounts
 {
     class Account
     {
+        //Client Info
         static public string BankName = "Fat $tacks Banking";
         static public string ClientName = "Mike Jones";
         static public string ClientAddress = "   2564 West Hype Ave\n    Eastwood, California 66421";
         static public string ClientPhone = "899-555-555";
 
-
-  
-
-        static public  string ToCurrency(double nums)
+        //Method for formating double data type to currency 
+        static public string ToCurrency(double nums)
         {
 
             string curCulture = System.Threading.Thread.CurrentThread.CurrentCulture.ToString();
@@ -26,12 +25,10 @@ namespace BankAccounts
             currencyFormat.CurrencyNegativePattern = 1;
 
             string cash = nums.ToString("C", currencyFormat);
-
-          
-
+       
             return cash;
         }
-        
+
 
     }
 }
