@@ -26,6 +26,6 @@ The Project contains one parent class and three child classes. A child class for
   - [ ] Each transaction should show the transaction amount
   - [ ] Each transaction should show the new current balance after the transaction
   
-  ###Extras
-  Overdraft Alert
-  Exception Handling
+  ###Extras 
+ - Overdraft Alert
+ - Exception Handling
