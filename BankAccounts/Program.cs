@@ -13,13 +13,11 @@ namespace BankAccounts
 
         static void Main(string[] args)
         {
-            Checking myChecking = new Checking();
 
-            Savings mySaving = new Savings();
-
-            Reserve myReserve = new Reserve();
-
+           
             Console.WriteLine("\nWelcome to {0}!", Account.BankName);
+
+            //Start loop for Main Menu 
             int userInput = 0;
             do
             {
@@ -65,6 +63,7 @@ namespace BankAccounts
 
 
         }
+
         static int MainMenu()
         {
 
@@ -163,7 +162,7 @@ namespace BankAccounts
             "\nYou have 3 accounts with {1}" +
             "\n\nAddress: \n {2}" +
             "\nPhone Number: {3}", Account.ClientName, Account.BankName, Account.ClientAddress, Account.ClientPhone);
-
+            
             Console.WriteLine("---------------------------------------------");
         }
 

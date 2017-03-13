@@ -35,7 +35,7 @@ namespace BankAccounts
                 throw;
             }
             AccountBalance += DepositAmount;
-            Console.WriteLine("{0} have been deposited into your {1} Account.\nYour new balance is {2}", ToCurrency(DepositAmount), AccountType, ToCurrency(AccountBalance));
+            Console.WriteLine("\n{0} have been deposited into your {1} Account.\nYour new balance is {2}", ToCurrency(DepositAmount), AccountType, ToCurrency(AccountBalance));
 
             myReserveLog.Add((DateTime.Today.ToString("d")) + " " + "+" + ToCurrency(DepositAmount) + " Running Balance: " + ToCurrency(AccountBalance));
 
@@ -62,7 +62,7 @@ namespace BankAccounts
                 Console.WriteLine("\nALERT: The withdraw amount is more than your current balance.\nYou have 24 hours to deposit funds before \noverdraft fees are posted to your account.\n");
             }
 
-            Console.WriteLine("{0} has been withdrawn from your {1} Account.\nYour new balance is {2}", ToCurrency(WithdrawAmount), AccountType, ToCurrency(AccountBalance));
+            Console.WriteLine("\n{0} has been withdrawn from your {1} Account.\nYour new balance is {2}", ToCurrency(WithdrawAmount), AccountType, ToCurrency(AccountBalance));
 
             myReserveLog.Add((DateTime.Today.ToString("d")) + " " + "-" + ToCurrency(WithdrawAmount) + " Running Balance: " + ToCurrency(AccountBalance));
 
@@ -76,15 +76,19 @@ namespace BankAccounts
             Console.WriteLine(" # {0} Balance:{1}", AccountNumber, ToCurrency(AccountBalance));
         }
 
-            static public void SendLog()
+        static public void SendLog()
         {
             StreamWriter rWriter = new StreamWriter(@"..\..\ReserveStatement.txt");
 
             using (rWriter)
             {
                 rWriter.WriteLine(ClientName + " " + AccountType + " " + AccountNumber);
+                rWriter.WriteLine("\n");
                 foreach (string line in myReserveLog)
+                {
                     rWriter.WriteLine(line);
+                }
+
             }
         }
     }

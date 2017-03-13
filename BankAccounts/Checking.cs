@@ -12,7 +12,7 @@ namespace BankAccounts
         static List<string> myCheckingLog = new List<string>();
 
         static string AccountType = "Checking";
-        static int AccountNumber = 334556567;
+        public static int AccountNumber = 334556567;
         static double AccountBalance = 100;
 
         public Checking()
@@ -36,7 +36,7 @@ namespace BankAccounts
                 throw;
             }
             AccountBalance += DepositAmount;
-            Console.WriteLine("{0} have been deposited into your {1} Account.\nYour new balance is {2}", ToCurrency(DepositAmount), AccountType, ToCurrency(AccountBalance));
+            Console.WriteLine("\n{0} have been deposited into your {1} Account.\nYour new balance is {2}", ToCurrency(DepositAmount), AccountType, ToCurrency(AccountBalance));
 
             myCheckingLog.Add((DateTime.Today.ToString("d")) + " " + "+" + ToCurrency(DepositAmount) + " Running Balance: " + ToCurrency(AccountBalance));
 
@@ -62,7 +62,7 @@ namespace BankAccounts
             }
 
             AccountBalance -= WithdrawAmount;
-            Console.WriteLine("{0} has been withdrawn from your {1} Account.\nYour new balance is {2}", ToCurrency(WithdrawAmount), AccountType, ToCurrency(AccountBalance));
+            Console.WriteLine("\n{0} has been withdrawn from your {1} Account.\nYour new balance is {2}", ToCurrency(WithdrawAmount), AccountType, ToCurrency(AccountBalance));
 
             myCheckingLog.Add((DateTime.Today.ToString("d")) + " " + "-" + ToCurrency(WithdrawAmount) + " Running Balance: " + ToCurrency(AccountBalance));
 
@@ -83,8 +83,12 @@ namespace BankAccounts
             using (cWriter)
             {
                 cWriter.WriteLine(ClientName + " " + AccountType + " " + AccountNumber);
+                cWriter.WriteLine("\n");
                 foreach (string line in myCheckingLog)
+                {
                     cWriter.WriteLine(line);
+                }
+
             }
         }
     }

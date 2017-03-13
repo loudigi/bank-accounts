@@ -39,7 +39,7 @@ namespace BankAccounts
 
             AccountBalance += DepositAmount;
 
-            Console.WriteLine("{0} have been deposited into your {1} Account.\nYour new balance is {2}", ToCurrency(DepositAmount), AccountType, ToCurrency(AccountBalance));
+            Console.WriteLine("\n{0} have been deposited into your {1} Account.\nYour new balance is {2}", ToCurrency(DepositAmount), AccountType, ToCurrency(AccountBalance));
 
             mySavingsLog.Add((DateTime.Today.ToString("d")) + " " + "+" + ToCurrency(DepositAmount) + " Running Balance: " + ToCurrency(AccountBalance));
 
@@ -67,7 +67,7 @@ namespace BankAccounts
                 Console.WriteLine("\nALERT: The withdraw amount is more than your current balance.\nYou have 24 hours to deposit funds before \noverdraft fees are posted to your account.\n");
             }
 
-            Console.WriteLine("{0} has been withdrawn from your {1} Account.\nYour new balance is {2}", ToCurrency(WithdrawAmount), AccountType, ToCurrency(AccountBalance));
+            Console.WriteLine("\n{0} has been withdrawn from your {1} Account.\nYour new balance is {2}", ToCurrency(WithdrawAmount), AccountType, ToCurrency(AccountBalance));
 
             mySavingsLog.Add((DateTime.Today.ToString("d")) + " " + "-" + ToCurrency(WithdrawAmount) + " Running Balance: " + ToCurrency(AccountBalance));
 
@@ -88,9 +88,13 @@ namespace BankAccounts
 
             using (sWriter)
             {
-                sWriter.WriteLine(ClientName + " " + AccountType + " " + AccountNumber);
+                sWriter.WriteLine(ClientName + " " + AccountType + " " + AccountNumber + " " + BankName);
+                sWriter.WriteLine("\n");
                 foreach (string line in mySavingsLog)
+                {
                     sWriter.WriteLine(line);
+                }
+                    
             }
         }
     }
