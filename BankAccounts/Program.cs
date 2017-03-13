@@ -35,11 +35,11 @@ namespace BankAccounts
                         ClientInfo();
                         break;
                     case 2:
-                        Console.WriteLine("---------------------------------------------");
+                        Console.WriteLine("-----------------------------------------------");
                         Checking.ShowBalance();
                         Savings.ShowBalance();
                         Reserve.ShowBalance();
-                        Console.WriteLine("---------------------------------------------");
+                        Console.WriteLine("-----------------------------------------------");
             
                         break;
                     case 3:
@@ -107,12 +107,12 @@ namespace BankAccounts
                 }
                 else
                 {
-                    Console.WriteLine(depositSelection + "This is not an option. Returning to Main Menu");
+                    Console.WriteLine(depositSelection + " This is not an option. Returning to Main Menu");
                 }
             }
             catch (FormatException dm)
             {
-                Console.WriteLine("This is not an option. Returning to Main Menu");
+                Console.WriteLine(" This is not an option. Returning to Main Menu");
             }
         }
 
@@ -145,12 +145,12 @@ namespace BankAccounts
                 }
                 else
                 {
-                    Console.WriteLine(withdrawSelection + "This is not an option. Returning to Main Menu");
+                    Console.WriteLine(withdrawSelection + " This is not an option. Returning to Main Menu");
                 }
             }
             catch (FormatException wm)
             {
-                Console.WriteLine("This is not an option. Returning to Main Menu");
+                Console.WriteLine(" This is not an option. Returning to Main Menu");
             }
         }
 

@@ -12,7 +12,7 @@ namespace BankAccounts
 
         static string AccountType = "Reserve";
         static int AccountNumber = 231453675;
-        static double AccountBalance = 300;
+        static double AccountBalance = 500;
 
         public Reserve()
         {
@@ -59,7 +59,7 @@ namespace BankAccounts
 
             if (WithdrawAmount > AccountBalance)
             {
-                Console.WriteLine("\nALERT: The withdraw amount is more than your current balance.\nYou have 24 hours to deposit funds before \noverdraft fees are posted to your account.\n");
+                Console.WriteLine("\nALERT:\a The withdraw amount is more than your current balance.\nYou have 24 hours to deposit funds before \noverdraft fees are posted to your account.\n");
             }
 
             Console.WriteLine("\n{0} has been withdrawn from your {1} Account.\nYour new balance is {2}", ToCurrency(WithdrawAmount), AccountType, ToCurrency(AccountBalance));
@@ -73,7 +73,7 @@ namespace BankAccounts
         static public void ShowBalance()
         {
             Console.Write(String.Format(" {0,-16}", AccountType + " Account"));
-            Console.WriteLine(" # {0} Balance:{1}", AccountNumber, ToCurrency(AccountBalance));
+            Console.WriteLine(" # {0} Balance: {1}", AccountNumber, ToCurrency(AccountBalance));
         }
 
         static public void SendLog()
@@ -82,7 +82,7 @@ namespace BankAccounts
 
             using (rWriter)
             {
-                rWriter.WriteLine(ClientName + " " + AccountType + " " + AccountNumber);
+                rWriter.WriteLine(ClientName + " " + AccountType + " " + AccountNumber + " " + BankName);
                 rWriter.WriteLine("\n");
                 foreach (string line in myReserveLog)
                 {
