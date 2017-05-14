@@ -3,7 +3,7 @@
 Goal - Design a C# console application to manage a client's bank account(s).
 
 
-###Menu Items
+### Menu Items
 - [ ] View Client Information
 - [ ] View Account Balances
   - [ ] Checking Account Balance
@@ -15,7 +15,7 @@ Goal - Design a C# console application to manage a client's bank account(s).
 
 The Project contains one parent class and three child classes. A child class for each account type.
 
-###Required Tasks
+### Required Tasks
 - [ ] Use StreamWriter to create account summary files that track transactions **for each account type (each type has its own text file)**. Files should be located in the Debug Folder and should include:
   - [ ] Name of Client
   - [ ] Client Account Number
@@ -26,6 +26,6 @@ The Project contains one parent class and three child classes. A child class for
   - [ ] Each transaction should show the transaction amount
   - [ ] Each transaction should show the new current balance after the transaction
   
-  ###Extras 
+  ### Extras 
  - Overdraft Alert
  - Exception Handling
